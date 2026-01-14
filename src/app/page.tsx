@@ -21,11 +21,31 @@ import {
   Star,
   ArrowRight,
   Menu,
-  X
+  X,
+  LucideIcon
 } from 'lucide-react';
 
+// --- Types ---
+interface TrustBadgeProps {
+  icon: LucideIcon;
+  text: string;
+}
+
+interface PriceItem {
+  job: string;
+  price: string;
+  detail: string;
+}
+
+interface Tier {
+  id: string;
+  name: string;
+  desc: string;
+  color: string;
+}
+
 // --- Constants & Config ---
-const TIERS = {
+const TIERS: Record<string, Tier> = {
   CRITICAL: {
     id: 'critical',
     name: 'Tier 1: Protect the House',
@@ -46,7 +66,7 @@ const TIERS = {
   }
 };
 
-const PRICE_GRID = [
+const PRICE_GRID: PriceItem[] = [
   { job: 'Handyperson Task', price: '158', detail: 'Up to 2 hours' },
   { job: 'Leaky Faucet Fix', price: '226', detail: 'Parts included' },
   { job: 'Outlet Replacement', price: '185', detail: 'Safety checked' },
@@ -55,14 +75,14 @@ const PRICE_GRID = [
 
 // --- Sub-Components ---
 
-const TrustBadge = ({ icon: Icon, text }) => (
+const TrustBadge: React.FC<TrustBadgeProps> = ({ icon: Icon, text }) => (
   <div className="flex items-center gap-1.5 px-3 py-1 bg-white/80 rounded-full border border-slate-200 shadow-sm">
     <Icon className="w-3.5 h-3.5 text-emerald-600" />
     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600">{text}</span>
   </div>
 );
 
-const Navbar = () => (
+const Navbar: React.FC = () => (
   <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
     <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <div className="flex items-center gap-8">
@@ -92,7 +112,7 @@ const Navbar = () => (
   </nav>
 );
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const [triageInput, setTriageInput] = useState('');
 
   return (
@@ -183,7 +203,7 @@ const Hero = () => {
   );
 };
 
-const PricingGrid = () => (
+const PricingGrid: React.FC = () => (
   <section className="py-24 px-6 bg-white">
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-16">
@@ -212,7 +232,7 @@ const PricingGrid = () => (
   </section>
 );
 
-const ProSection = () => (
+const ProSection: React.FC = () => (
   <section className="py-24 px-6 bg-slate-50">
     <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
       <div className="lg:w-1/3">
@@ -272,7 +292,7 @@ const ProSection = () => (
   </section>
 );
 
-const Verticals = () => (
+const Verticals: React.FC = () => (
   <section className="py-24 px-6 bg-[#F8FAF9]">
     <div className="max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-8">
@@ -304,7 +324,7 @@ const Verticals = () => (
   </section>
 );
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <footer className="bg-slate-950 text-slate-400 pt-24 pb-12 px-6">
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
       <div className="col-span-1 lg:col-span-2">
@@ -343,7 +363,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="max-w-7xl mx-auto border-t border-slate-900 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
-      <p className="text-xs font-medium">© 2026 HomeTrust Platform. Licensed, Bonded, Insured Providers Only.</p>
+      <p className="text-xs font-medium">© 2024 HomeTrust Platform. Licensed, Bonded, Insured Providers Only.</p>
       <div className="flex gap-8 text-xs font-black uppercase tracking-widest">
         <a href="#" className="hover:text-white">Privacy</a>
         <a href="#" className="hover:text-white">Terms</a>
@@ -396,15 +416,15 @@ export default function App() {
               </p>
               <div className="space-y-4">
                 <div className="flex gap-4 items-center">
-                  <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-black">1</div>
+                  <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-black text-sm">1</div>
                   <span className="font-bold text-slate-700">Prevent future damage (Tier 1)</span>
                 </div>
                 <div className="flex gap-4 items-center">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-black">2</div>
+                  <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-black text-sm">2</div>
                   <span className="font-bold text-slate-700">Restore vital systems (Tier 2)</span>
                 </div>
                 <div className="flex gap-4 items-center opacity-50">
-                  <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-black">3</div>
+                  <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-black text-sm">3</div>
                   <span className="font-bold text-slate-400 italic text-sm">Optional visual upgrades (Tier 3)</span>
                 </div>
               </div>
