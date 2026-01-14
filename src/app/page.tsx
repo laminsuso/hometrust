@@ -22,7 +22,8 @@ import {
   ArrowRight,
   Menu,
   X,
-  LucideIcon
+  LucideIcon,
+  Quote
 } from 'lucide-react';
 
 // --- Types ---
@@ -324,6 +325,42 @@ const Verticals: React.FC = () => (
   </section>
 );
 
+const FounderNote: React.FC = () => (
+  <section className="py-24 px-6 bg-white border-t border-slate-100">
+    <div className="max-w-4xl mx-auto">
+      <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="relative shrink-0">
+          <div className="w-48 h-48 rounded-[2rem] bg-slate-200 overflow-hidden shadow-2xl rotate-3 group hover:rotate-0 transition-transform duration-500">
+            {/* Placeholder for Paul A. Martino image */}
+            <div className="w-full h-full bg-slate-800 flex items-center justify-center text-white font-black text-2xl">
+              PM
+            </div>
+          </div>
+          <div className="absolute -bottom-4 -right-4 bg-emerald-600 text-white p-3 rounded-2xl shadow-xl">
+            <Quote className="w-6 h-6 fill-current" />
+          </div>
+        </div>
+        
+        <div className="flex-1">
+          <h3 className="text-2xl font-black text-slate-900 mb-6">A Note from our Founder</h3>
+          <div className="space-y-4 text-slate-600 leading-relaxed italic text-lg">
+            <p>
+              "I started HomeTrust because I was tired of seeing my friends and neighbors get paralyzed by the sheer volume of home maintenance. The industry thrives on confusion—on 'information asymmetry' that leaves the homeowner guessing."
+            </p>
+            <p>
+              "Our mission is simple: we provide the triage you need to protect your biggest asset, and the vetted pros you need to actually sleep at night. We're not just a directory; we're your home's defense system."
+            </p>
+          </div>
+          <div className="mt-8">
+            <div className="font-black text-slate-900 uppercase tracking-widest">Paul A. Martino</div>
+            <div className="text-sm font-bold text-emerald-600 uppercase tracking-tighter">Founder & CEO, HomeTrust</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 const Footer: React.FC = () => (
   <footer className="bg-slate-950 text-slate-400 pt-24 pb-12 px-6">
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
@@ -363,7 +400,7 @@ const Footer: React.FC = () => (
       </div>
     </div>
     <div className="max-w-7xl mx-auto border-t border-slate-900 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
-      <p className="text-xs font-medium">© 2024 HomeTrust Platform. Licensed, Bonded, Insured Providers Only.</p>
+      <p className="text-xs font-medium">© 2026 HomeTrust Platform. Licensed, Bonded, Insured Providers Only.</p>
       <div className="flex gap-8 text-xs font-black uppercase tracking-widest">
         <a href="#" className="hover:text-white">Privacy</a>
         <a href="#" className="hover:text-white">Terms</a>
@@ -461,6 +498,8 @@ export default function App() {
         </section>
 
         <Verticals />
+        
+        <FounderNote />
       </main>
       <Footer />
     </div>
